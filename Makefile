@@ -1,5 +1,5 @@
 NAME = libftprintf.a
-SOURCES = \
+SOURCES = printf_function.c	printf_libft_function.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
