@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:52:25 by yozlu             #+#    #+#             */
-/*   Updated: 2024/11/10 00:37:15 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/11/10 22:23:01 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 int ft_putchar(char c);
 int  ft_putstr(char *s);
 int ft_putnbr(long n);
-int ft_putnbr_unsigned(unsigned long n);
-int ft_putnbr_hexe(unsigned int n, char x);
+int ft_putnbr_hexe(unsigned long n, char x);
 char *ft_strchr(const char *s, int c);
 size_t ft_strlen(const char *s);
 int ft_printf_pointer(void *ptr);

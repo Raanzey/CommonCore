@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:46:58 by yozlu             #+#    #+#             */
-/*   Updated: 2024/11/09 22:56:25 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/11/10 22:23:38 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,21 @@ int ft_putnbr(long n)
 	ft_putchar(n % 10 + '0');
 	return(len + 1);
 }
-int ft_putnbr_unsigned(unsigned long n)
+int ft_printf_pointer(void *ptr)
 {
     int len;
-	
-	len = 0;
-    if (n >= 10)
-    {
-        len += ft_putnbr_unsigned(n / 10);
-    }
-    ft_putchar(n % 10 + '0');
-    return len + 1;
+
+    len = 0; 
+    write(1, "0x", 2); 
+    len += 2;
+    len += ft_putnbr_hexe((unsigned long)ptr, 'x'); 
+    return len;
 }
-int ft_putnbr_hexe(unsigned int n, char x)
+int ft_putnbr_hexe(unsigned long n, char x)
 {
 	int len;
 
 	len = 0; 
-	if (n < 0)
-		n = -n;
     if (n >= 16)  
         len += ft_putnbr_hexe(n / 16, x); 
     if (x == 'X')

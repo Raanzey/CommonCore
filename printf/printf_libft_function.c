@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_libft_function.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:41:52 by yozlu             #+#    #+#             */
-/*   Updated: 2024/11/08 19:20:24 by yozlu            ###   ########.fr       */
+/*   Updated: 2024/11/10 21:58:14 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,4 @@ size_t ft_strlen(const char *s)
         a++;
     }
     return (a);
-}
-int ft_printf_pointer(void *ptr)
-{
-    int len;
-
-    len = 0; 
-    write(1, "0x", 2); 
-    len += 2;
-    len += ft_putnbr_hexe((unsigned long)ptr, 'x'); 
-    return len;
 }
