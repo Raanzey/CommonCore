@@ -6,7 +6,7 @@
 /*   By: ubuntu <ubuntu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:25:36 by yozlu             #+#    #+#             */
-/*   Updated: 2024/12/05 20:24:17 by ubuntu           ###   ########.fr       */
+/*   Updated: 2024/12/05 20:38:14 by ubuntu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,7 @@ char	*ft_strdup(const char *s1)
 		return (NULL);
 	return (ft_memmove(s, s1, len));
 }
-// char *get_line(char *result, char *start, char *station, int i, int fd)
-// {
-// 	read(fd, start, BUFFER_SIZE);
-// 	while (result[i])
-// 	{
-// 		while (result[i])
-// 		{
-// 			if (result[i] == '\n')
-// 			{
-// 				i++;
-// 				start = ft_substr(start, 0, i);
-// 				station = result + i;
-// 				start = ft_strjoin(start, result);
-// 				return (start);
-// 			}
-// 			i++;
-// 		}
-// 		start = ft_strjoin(start, result);
-// 		read(fd, result, BUFFER_SIZE);
-// 		i = 0;
-// 	}
-// 	return(start);
-// }
+
 char *get_next_line(int fd)
 {
 	static char *station;
@@ -57,7 +35,7 @@ char *get_next_line(int fd)
 	start = calloc(BUFFER_SIZE, sizeof(char));
 	if (station == NULL)
 		station = calloc(BUFFER_SIZE, sizeof(char));
-	read(fd, result, BUFFER_SIZE);
+	read(fd, start, BUFFER_SIZE);
 	while (result[i])
 	{
 		while (result[i])
@@ -65,7 +43,7 @@ char *get_next_line(int fd)
 			if (result[i] == '\n')
 			{
 				i++;
-				result = ft_substr(start, 0, i);
+				start = ft_substr(start, 0, i);
 				station = result + i;
 				start = ft_strjoin(start, result);
 				return (start);
@@ -76,12 +54,13 @@ char *get_next_line(int fd)
 		read(fd, result, BUFFER_SIZE);
 		i = 0;
 	}
-	return (result);
+	return (start);
 }
 #include <stdio.h>
 int main()
 {
-	char *c;
-	int fd = open("yusuf.txt", O_RDWR | O_CREAT, 0644);
+	int fd = open("ysf.txt", O_CREAT| O_RDWR);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 }
