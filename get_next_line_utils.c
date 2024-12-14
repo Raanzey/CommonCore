@@ -6,12 +6,12 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:25:33 by yozlu             #+#    #+#             */
-/*   Updated: 2024/12/07 15:52:30 by yozlu            ###   ########.fr       */
+/*   Updated: 2024/12/14 19:57:46 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h>
 char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*size;
@@ -44,27 +44,31 @@ size_t	ft_strlen(const char *s)
 	return (a);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	char	*new;
 	int		i;
+	char 	*c;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	if (ft_strlen(s) <= start)
-		return (ft_strdup(""));
+
+	if (ft_strlen(s) < start)
+	{
+		// 	printf("s:%d\n",ft_strlen(s));
+		 printf("buradayim");
+		c = malloc(1);
+		c[0]= '\0';
+		return (free(c),NULL);
+	}
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
 	new = malloc(len + 1);
 	if (new == NULL)
 		return (NULL);
 	while (len--)
-	{
-		new[i] = s[start];
-		i++;
-		start++;
-	}
+		new[i++] = s[start++];
 	new[i] = 0;
 	return ((char *)new);
 }
