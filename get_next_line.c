@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:25:36 by yozlu             #+#    #+#             */
-/*   Updated: 2024/12/14 20:00:01 by yozlu            ###   ########.fr       */
+/*   Updated: 2024/12/18 20:09:17 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*ft_line_before(char *station)
 		i++;
 	result = ft_substr(station, 0, i + (station[i] == '\n'));
 	if (!result)
-		return (free(result), NULL);
+		return (/*free(result),*/ NULL);
 	if (station[i] == '\n')
 	{
 		result[i] = station[i];
@@ -60,24 +60,24 @@ static char	*ft_line_after(char *station)
 	char	*temp;
 
 	i = 0;
+	if (!station[i] || !*station)
+		return (free(station), NULL);
 	temp = ft_strchr(station, '\n');
 	if (temp)
 	{
 		after_station = ft_substr(temp, 1, ft_strlen(temp));
 		if (!after_station)
 		{
-			free(after_station);
-			return (NULL);
+			// free(after_station);
+			return (free(station), NULL);
 		}
 		free(station);
 		return (after_station);
 	}
-	if (!station[i])
-		return (free(station), NULL);
 	temp = ft_strchr(station, '\0');
 	after_station = ft_substr(temp, 0, ft_strlen(temp));
 	if (!after_station)
-		return (NULL);
+		return (/*free(after_station),*/ NULL);
 	return (free(station), after_station);
 }
 char	*station_free(char *buffer, char *station)
@@ -99,9 +99,9 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	buffer = malloc((BUFFER_SIZE + 1));
 	if (buffer == NULL)
-		return (NULL);
+		return (free(buffer), NULL);
 	count = 1;
 	while (!ft_strchr(station, '\n') && count != 0)
 	{
@@ -119,23 +119,23 @@ char	*get_next_line(int fd)
 	return (result);
 }
 
-// #include <stdio.h>
+#include <stdio.h>
 
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*buf;
+int	main(void)
+{
+	int		fd;
+	char	*buf;
 
-// 	fd = open("yusuf.txt", O_CREAT | O_RDWR);
-// 	while (1)
-// 	{
-// 		buf = get_next_line(fd);
-// 		if (buf == NULL)
-// 		{
-// 			free(buf);
-// 			break ;
-// 		}
-// 		printf("%s", buf);
-// 		free(buf);
-// 	}
-// }
+	fd = open("yusuf.txt", O_CREAT | O_RDWR);
+	while (1)
+	{
+		buf = get_next_line(fd);
+		if (buf == NULL)
+		{
+			free(buf);
+			break ;
+		}
+		printf("%s", buf);
+		free(buf);
+	}
+}

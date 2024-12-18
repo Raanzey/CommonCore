@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:25:40 by yozlu             #+#    #+#             */
-/*   Updated: 2024/12/14 19:36:28 by yozlu            ###   ########.fr       */
+/*   Updated: 2024/12/18 19:52:17 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1000000
 # endif
 
 char	*get_next_line(int fd);
