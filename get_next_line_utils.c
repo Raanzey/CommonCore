@@ -6,7 +6,7 @@
 /*   By: yozlu <yozlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:25:33 by yozlu             #+#    #+#             */
-/*   Updated: 2024/12/18 20:08:59 by yozlu            ###   ########.fr       */
+/*   Updated: 2024/12/19 17:27:51 by yozlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	new[i] = 0;
 	return ((char *)new);
 }
+
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char		*ptr;
@@ -91,6 +92,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		ptr[len] = s[len];
 	return (dst);
 }
+
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char		*ptr;
